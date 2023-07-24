@@ -5,7 +5,10 @@ import (
 )
 
 type Account struct {
-	NickName string `gorm:"size:64"`
+	// app code
+	Code string `gorm:"uniqueIndex;size:32;not null"`
+
+	Name string `gorm:"size:32"`
 
 	Password string `gorm:"size:128;not null"`
 

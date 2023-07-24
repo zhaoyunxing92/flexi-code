@@ -9,14 +9,10 @@ type App struct {
 	TenantId string `gorm:"index;size:32;not null"`
 
 	// app code
-	Code string
+	Code string `gorm:"uniqueIndex;size:32;not null"`
 
 	// app name
-	Name string
+	Name string `gorm:"size:16;not null"`
 
 	gorm.Model
-}
-
-func (App) TableName() string {
-	return "app"
 }

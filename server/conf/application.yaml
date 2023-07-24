@@ -1,6 +1,9 @@
 app:
   name: ${APP_NAME:default}
   version: ${APP_VERSION:1.0.0}
+  token:
+    secret: flexi_code
+    expire: 7200
 
 storage:
   driver: mysql

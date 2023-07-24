@@ -17,6 +17,7 @@ var tables = []interface{}{
 	&entity.App{},
 	&entity.Tenant{},
 	&entity.Module{},
+	&entity.Account{},
 	&entity.Datasheet{},
 	&entity.DatasheetField{},
 	&entity.DatasheetRecord{},

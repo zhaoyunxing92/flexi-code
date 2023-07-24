@@ -5,5 +5,7 @@ import (
 )
 
 var ProviderSetService = wire.NewSet(
+	NewTokenService,
+	NewAccountService,
 	NewDatasheetService,
 )

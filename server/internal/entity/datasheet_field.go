@@ -1,64 +1,62 @@
 package entity
 
 import (
+	"database/sql"
+
 	"gorm.io/gorm"
 )
 
 type DatasheetField struct {
 
 	// table code
-	Table string
+	Table string `gorm:"index;size:32;not null"`
 
 	// field code
-	Code string
+	Code string `gorm:"index;size:32;not null"`
 
 	// field name
-	Name string
+	Name string `gorm:"size:32;not null"`
 
 	// field alias
-	Alias string
+	Alias string `gorm:"size:32"`
 
 	// field icon
-	Icon string
+	Icon string `gorm:"size:16"`
 
 	// field placeholder
-	Placeholder string
+	Placeholder string `gorm:"size:32"`
 
 	// field type
-	Type string
+	Type string `gorm:"size:16;not null"`
 
 	// field Required
-	Required bool
+	Required sql.NullBool `gorm:"not null;default:false"`
 
 	// field disabled
-	Disabled bool
+	Disabled sql.NullBool `gorm:"not null;default:false"`
 
 	// field order
-	Order string
+	Order float32 `gorm:"not null;default:0"`
 
 	// field default value
-	DefaultValue string
+	DefaultValue string `gorm:"size:32"`
 
 	// field format
-	Format string
+	Format string `gorm:"size:16"`
 
 	// field options
 	Options []DatasheetFieldOption `gorm:"type:json"`
 
 	// field desc
-	Desc string
+	Desc string `gorm:"size:128"`
 
 	gorm.Model
 }
 
-func (DatasheetField) TableName() string {
-	return "datasheet_field"
-}
-
 type DatasheetFieldOption struct {
 	// option label
-	Label string
+	Label string `json:"label"`
 
 	// option value
-	Value string
+	Value string `json:"value"`
 }

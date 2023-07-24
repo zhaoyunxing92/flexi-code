@@ -28,7 +28,3 @@ type Module struct {
 
 	gorm.Model
 }
-
-func (Module) TableName() string {
-	return "module"
-}

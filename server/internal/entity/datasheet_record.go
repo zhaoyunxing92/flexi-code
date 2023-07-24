@@ -6,35 +6,21 @@ import (
 
 type DatasheetRecord struct {
 	// tenant code
-	TenantId string
+	TenantId string `gorm:"index;size:32;not null"`
 
 	// app code
-	AppId string
+	AppId string `gorm:"index;size:32;not null"`
 
 	// module code
-	ModuleId string
+	ModuleId string `gorm:"index;size:32"`
 
 	// table code
-	Code string
+	RecordId string `gorm:"uniqueIndex;size:32;not null"`
 
-	// table name
-	Name string
-
-	// table icon
-	Icon string
-
-	// table desc
-	Desc string
-
-	// table alias
-	Alias string
+	Data string `gorm:"type:json"`
 
 	// table version
 	Version uint
 
 	gorm.Model
-}
-
-func (DatasheetRecord) TableName() string {
-	return "datasheet_record"
 }

@@ -6,14 +6,10 @@ import (
 
 type Tenant struct {
 	// tenant code
-	Code string
+	Code string `gorm:"uniqueIndex;size:32;not null"`
 
 	// tenant name
-	Name string
+	Name string `gorm:"size:32;not null"`
 
 	gorm.Model
-}
-
-func (Tenant) TableName() string {
-	return "tenant"
 }
