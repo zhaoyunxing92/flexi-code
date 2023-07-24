@@ -6,4 +6,5 @@ import (
 
 var ProviderSetCtrl = wire.NewSet(
 	NewDatasheetCtrl,
+	NewAccountCtrl,
 )

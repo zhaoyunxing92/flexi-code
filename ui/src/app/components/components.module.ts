@@ -6,6 +6,7 @@ import { NgForOf, NgSwitch, NgSwitchCase } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -14,16 +15,17 @@ import { MatGridListModule } from '@angular/material/grid-list';
   exports: [
     FormComponent
   ],
-  imports: [
-    SharedModule,
-    ReactiveFormsModule,
-    NgForOf,
-    NgSwitch,
-    NgSwitchCase,
-    MatInputModule,
-    MatSelectModule,
-    MatGridListModule
-  ]
+    imports: [
+        SharedModule,
+        ReactiveFormsModule,
+        NgForOf,
+        NgSwitch,
+        NgSwitchCase,
+        MatInputModule,
+        MatSelectModule,
+        MatGridListModule,
+        MatButtonModule
+    ]
 })
 export class ComponentsModule {
 }

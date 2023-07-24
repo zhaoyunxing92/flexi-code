@@ -43,7 +43,7 @@ type DatasheetField struct {
 	Format string
 
 	// field options
-	Options []DatasheetFieldOption
+	Options []DatasheetFieldOption `gorm:"type:json"`
 
 	// field desc
 	Desc string

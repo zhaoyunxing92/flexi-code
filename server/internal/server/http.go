@@ -29,7 +29,7 @@ func NewHttpServer(router *router.Router, app *configs.App) *gin.Engine {
 		router.RegisterDatasheet(datasheet)
 	}
 	//r.Use(middleware.GinLogger(), middleware.GinRecovery(true))
-	//r.GET("/health", func(ctx *gin.Context) { ctx.String(200, "OK") })
+	//r.GET("/health", funcs(ctx *gin.Context) { ctx.String(200, "OK") })
 	//
 	//login := r.Group("/api/v1")
 	//router.RegisterRouter(login)
