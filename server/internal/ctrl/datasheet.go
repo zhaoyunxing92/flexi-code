@@ -3,14 +3,14 @@ package ctrl
 import (
 	"github.com/gin-gonic/gin"
 
-	"github.com/zhaoyunxing92/flexi-code/server/internal/service"
+	"github.com/zhaoyunxing92/flexi-code/server/internal/service/datasheet"
 )
 
 type DatasheetCtrl struct {
-	datasheet *service.DatasheetService
+	datasheet *datasheet.Service
 }
 
-func NewDatasheetCtrl(datasheet *service.DatasheetService) *DatasheetCtrl {
+func NewDatasheetCtrl(datasheet *datasheet.Service) *DatasheetCtrl {
 	return &DatasheetCtrl{datasheet: datasheet}
 }
 

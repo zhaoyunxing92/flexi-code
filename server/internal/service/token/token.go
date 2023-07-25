@@ -1,4 +1,4 @@
-package service
+package token
 
 import (
 	"errors"
@@ -8,25 +8,25 @@ import (
 
 	"github.com/zhaoyunxing92/flexi-code/server/configs"
 	"github.com/zhaoyunxing92/flexi-code/server/internal/domain"
-	"github.com/zhaoyunxing92/flexi-code/server/internal/entity"
+	"github.com/zhaoyunxing92/flexi-code/server/internal/entity/sys"
 )
 
-type TokenService struct {
+type Service struct {
 	secret  string
 	expired uint
 }
 
-func NewTokenService(config *configs.App) *TokenService {
-	return &TokenService{secret: config.Secret, expired: config.Expired}
+func NewTokenService(config *configs.App) *Service {
+	return &Service{secret: config.Secret, expired: config.Expired}
 }
 
-func (s *TokenService) GenerateToken(account entity.Account) (string, error) {
+func (s *Service) GenerateToken(account sys.Account) (string, error) {
 	expired := time.Now().Add(time.Duration(s.expired) * time.Minute)
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, domain.NewClaims(account, expired))
 	return token.SignedString([]byte(s.secret))
 }
 
-func (s *TokenService) ParseToken(code string) (*domain.FlexiCodeClaims, error) {
+func (s *Service) ParseToken(code string) (*domain.FlexiCodeClaims, error) {
 	token, err := jwt.ParseWithClaims(code, &domain.FlexiCodeClaims{}, func(token *jwt.Token) (interface{}, error) {
 		return []byte(s.secret), nil
 	})

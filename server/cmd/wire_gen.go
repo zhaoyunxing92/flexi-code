@@ -8,12 +8,13 @@ package cmd
 
 import (
 	"github.com/gin-gonic/gin"
+
 	"github.com/zhaoyunxing92/flexi-code/server/configs"
 	"github.com/zhaoyunxing92/flexi-code/server/internal/ctrl"
-	"github.com/zhaoyunxing92/flexi-code/server/internal/repo"
+	"github.com/zhaoyunxing92/flexi-code/server/internal/repo/datasheet"
 	"github.com/zhaoyunxing92/flexi-code/server/internal/router"
 	"github.com/zhaoyunxing92/flexi-code/server/internal/server"
-	"github.com/zhaoyunxing92/flexi-code/server/internal/service"
+	datasheet2 "github.com/zhaoyunxing92/flexi-code/server/internal/service/datasheet"
 	"github.com/zhaoyunxing92/flexi-code/server/internal/storage"
 )
 
@@ -25,8 +26,8 @@ func initApplication(appConfig *configs.App, storageConfig *configs.Storage) (*g
 	if err != nil {
 		return nil, err
 	}
-	datasheetRepo := repo.NewDatasheetRepo(storageStorage)
-	datasheetService := service.NewDatasheetService(datasheetRepo)
+	datasheetRepo := datasheet.NewDatasheetRepo(storageStorage)
+	datasheetService := datasheet2.NewDatasheetService(datasheetRepo)
 	datasheetCtrl := ctrl.NewDatasheetCtrl(datasheetService)
 	routerRouter := router.NewRouter(datasheetCtrl)
 	engine := server.NewHttpServer(routerRouter, appConfig)

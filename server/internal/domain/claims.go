@@ -5,7 +5,7 @@ import (
 
 	"github.com/golang-jwt/jwt/v5"
 
-	"github.com/zhaoyunxing92/flexi-code/server/internal/entity"
+	"github.com/zhaoyunxing92/flexi-code/server/internal/entity/sys"
 )
 
 type FlexiCodeClaims struct {
@@ -20,9 +20,9 @@ type FlexiCodeClaims struct {
 	CreationTime   time.Time `json:"-"`
 }
 
-func NewClaims(account entity.Account, expired time.Time) *FlexiCodeClaims {
+func NewClaims(account sys.Account, expired time.Time) *FlexiCodeClaims {
 	return &FlexiCodeClaims{
-		Account:        account.Code,
+		Account:        account.AccountId.String,
 		Avatar:         account.Avatar,
 		Name:           account.Name,
 		ExpirationTime: expired,

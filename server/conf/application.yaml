@@ -8,4 +8,4 @@ app:
 storage:
   driver: mysql
   auto-migrate: true
-  connection: root:123456@tcp(192.168.56.100:3306)/flexi_code?charset=utf8mb4&parseTime=True&loc=Local
+  connection: root:apitable@com@tcp(127.0.0.1:3306)/flexi_code?charset=utf8mb4&parseTime=True&loc=Local

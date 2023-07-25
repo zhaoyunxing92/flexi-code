@@ -13,16 +13,6 @@ import (
 	"github.com/zhaoyunxing92/flexi-code/server/pkg/log"
 )
 
-var tables = []interface{}{
-	&entity.App{},
-	&entity.Tenant{},
-	&entity.Module{},
-	&entity.Account{},
-	&entity.Datasheet{},
-	&entity.DatasheetField{},
-	&entity.DatasheetRecord{},
-}
-
 type Storage struct {
 	DB     *gorm.DB
 	config *configs.Storage
@@ -61,7 +51,7 @@ func (storage *Storage) InitStorageTable() error {
 	}
 
 	if config.IsAutoMigrate() {
-		if err = db.AutoMigrate(tables...); err != nil {
+		if err = db.AutoMigrate(entity.Tables()...); err != nil {
 			log.Errorf("auto migrate tables failed: %s", err)
 			return err
 		}
