@@ -20,20 +20,23 @@ export class LoginComponent implements OnInit {
     console.log(this.login.value)
   }
 
-  getErrorMessage(ctl: any): string {
-    console.log(ctl)
+  getErrorMessage(ctl: AbstractControl<string, string>, name: string): string {
+    console.log(ctl.errors)
     if (ctl?.hasError("required")) {
-      return "请输入账号"
+      return `请输入${name}`
+    } else if (ctl?.hasError("email")) {
+      return '邮箱格式错误'
+    } else if (ctl?.hasError("minlength")) {
+      return `${name}长度至少要8位`
     }
-    console.log(this.account?.errors)
-    return ""
+    return '参数验证不通过'
   }
 
-  get account() {
-    return this.login.get("account")
+  get account(): AbstractControl<string, string> {
+    return <AbstractControl>this.login.get("account")
   }
 
-  get password() {
-    return this.login.get<string>("password")
+  get password(): AbstractControl<string, string> {
+    return <AbstractControl>this.login.get<string>("password")
   }
 }
