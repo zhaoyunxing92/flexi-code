@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Definition } from '../../schema/field';
-import { FormGroup } from '@angular/forms';
-import { FieldDefinitionService } from '../../service/field-definition.service';
-import { FieldControlService } from '../../service/field-control.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {Definition} from '../../schema/field';
+import {FormGroup} from '@angular/forms';
+import {FieldControlService} from '../../service/field-control.service';
 
 @Component({
   selector: 'fc-form',

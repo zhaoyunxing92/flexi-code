@@ -12,10 +12,10 @@ import (
 func Response(ctx *gin.Context, err error, data Body) {
 	//lang := GetLang(ctx)
 	// no error
-	if err == nil {
-		ctx.JSON(http.StatusOK, NewRespBodyData(http.StatusOK, reason.Success, data).TrMsg(lang))
-		return
-	}
+	//if err == nil {
+	//	ctx.JSON(http.StatusOK, NewRespBodyData(http.StatusOK, reason.Success, data).TrMsg(lang))
+	//	return
+	//}
 
 	// no error
 	ctx.JSON(http.StatusOK, data)
@@ -25,7 +25,7 @@ func Response(ctx *gin.Context, err error, data Body) {
 func BindAndCheck(ctx *gin.Context, data interface{}) bool {
 	if err := ctx.ShouldBindJSON(data); err != nil {
 		log.Errorf("参数绑定异常: %s", err.Error())
-		Response(ctx, Fail(400, "参数绑定异常", "参数绑定异常"))
+		Response(ctx, err, Fail(400, "参数绑定异常", "参数绑定异常"))
 		ctx.Abort()
 		return true
 	}

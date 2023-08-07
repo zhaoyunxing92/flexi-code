@@ -1,6 +1,8 @@
 package i18n
 
-import "embed"
+import (
+	"embed"
+)
 
 //go:embed  *.yaml
 var I18n embed.FS

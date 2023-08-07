@@ -1,12 +1,8 @@
 package handler
 
-import (
-	"github.com/zhaoyunxing92/flexi-code/server/internal/translator"
-)
-
 type Body interface{}
 
-type RespBody[T Body] struct {
+type Resp[T Body] struct {
 	// http code
 	Code int `json:"code"`
 
@@ -16,27 +12,26 @@ type RespBody[T Body] struct {
 	// response message
 	Message string `json:"msg"`
 
-	// reason key
-	Reason string `json:"reason"`
-
 	// response data
 	Data Body `json:"data,omitempty"`
 }
 
-func (res *RespBody[T]) TrMsg(lang translator.Language) {
-	if len(res.Message) == 0 {
-		res.Message = translator.Tr(lang, res.Reason)
-	}
+// TrMsg translate the reason cause as a message
+//func (r *Resp) TrMsg(lang i18n.Language) *Resp {
+//	if len(r.Message) == 0 {
+//		r.Message = translator.Tr(lang, r.Reason)
+//	}
+//	return r
+//}
+
+func New[T Body](code int, succeed bool, msg string, data T) Resp[T] {
+	return Resp[T]{code, succeed, msg, data}
 }
 
-func New[T Body](code int, succeed bool, msg, reason string, data T) RespBody[T] {
-	return RespBody[T]{code, succeed, msg, reason, data}
+func Succeed(msg string, data Body) Resp[Body] {
+	return New[Body](200, true, msg, data)
 }
 
-func Succeed(msg, reason string, data Body) RespBody[Body] {
-	return New[Body](200, true, msg, reason, data)
-}
-
-func Fail(code int, msg, reason string) RespBody[Body] {
-	return New[Body](code, false, msg, reason, nil)
+func Fail(code int, msg, reason string) Resp[Body] {
+	return New[Body](code, false, msg, reason)
 }
