@@ -22,7 +22,7 @@
       <!--多行文本-->
       <mat-form-field *ngSwitchCase="'textarea'" appearance="fill">
         <mat-label [id]="def.id">{{def.name}}</mat-label>
-        <textarea matInput #textarea [placeholder]="def.placeholder" [maxLength]="def.scope?.max"
+        <textarea  matInput #textarea [placeholder]="def.placeholder" [maxLength]="def.scope?.max"
                   autocomplete="off"></textarea>
         <mat-hint align="end">{{textarea.value.length}}/{{def.scope?.max}}</mat-hint>
       </mat-form-field>

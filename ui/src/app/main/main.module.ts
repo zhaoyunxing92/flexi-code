@@ -8,6 +8,10 @@ import { ShareComponent } from './share/share.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgForOf, NgIf, NgSwitch, NgSwitchCase } from '@angular/common';
 import { ComponentsModule } from '../components/components.module';
+import {MatCardModule} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, ShareComponent],
@@ -20,7 +24,11 @@ import { ComponentsModule } from '../components/components.module';
     NgSwitch,
     NgSwitchCase,
     NgIf,
-    ComponentsModule
+    ComponentsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatInputModule
   ]
 })
 export class MainModule { }
