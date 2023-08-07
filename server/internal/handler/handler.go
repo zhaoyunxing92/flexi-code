@@ -5,12 +5,11 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/zhaoyunxing92/flexi-code/server/internal/models"
 	"github.com/zhaoyunxing92/flexi-code/server/pkg/log"
 )
 
 // Response handle response body
-func Response(ctx *gin.Context, err error, data models.Response[models.Body]) {
+func Response(ctx *gin.Context, err error, data Body) {
 	//lang := GetLang(ctx)
 	// no error
 	if err == nil {
@@ -26,7 +25,7 @@ func Response(ctx *gin.Context, err error, data models.Response[models.Body]) {
 func BindAndCheck(ctx *gin.Context, data interface{}) bool {
 	if err := ctx.ShouldBindJSON(data); err != nil {
 		log.Errorf("参数绑定异常: %s", err.Error())
-		Response(ctx, models.Fail(400, "参数绑定异常", "参数绑定异常"))
+		Response(ctx, Fail(400, "参数绑定异常", "参数绑定异常"))
 		ctx.Abort()
 		return true
 	}

@@ -13,7 +13,7 @@ func Tables() []interface{} {
 		&node.Node{},
 		&space.Space{},
 		&datasheet.Datasheet{},
-		&datasheet.DatasheetField{},
-		&datasheet.DatasheetRecord{},
+		&datasheet.Field{},
+		&datasheet.Record{},
 	}
 }

@@ -4,7 +4,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type DatasheetRecord struct {
+type Record struct {
 	// tenant code
 	TenantId string `gorm:"index;size:32;not null"`
 

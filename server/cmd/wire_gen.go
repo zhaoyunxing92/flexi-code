@@ -10,7 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/zhaoyunxing92/flexi-code/server/configs"
-	"github.com/zhaoyunxing92/flexi-code/server/internal/ctrl"
+	"github.com/zhaoyunxing92/flexi-code/server/internal/controller"
 	"github.com/zhaoyunxing92/flexi-code/server/internal/repo/datasheet"
 	"github.com/zhaoyunxing92/flexi-code/server/internal/router"
 	"github.com/zhaoyunxing92/flexi-code/server/internal/server"
@@ -28,7 +28,7 @@ func initApplication(appConfig *configs.App, storageConfig *configs.Storage) (*g
 	}
 	datasheetRepo := datasheet.NewDatasheetRepo(storageStorage)
 	datasheetService := datasheet2.NewDatasheetService(datasheetRepo)
-	datasheetCtrl := ctrl.NewDatasheetCtrl(datasheetService)
+	datasheetCtrl := controller.NewDatasheetCtrl(datasheetService)
 	routerRouter := router.NewRouter(datasheetCtrl)
 	engine := server.NewHttpServer(routerRouter, appConfig)
 	return engine, nil

@@ -6,7 +6,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type DatasheetField struct {
+type Field struct {
 
 	// table code
 	Table string `gorm:"index;size:32;not null"`

@@ -9,7 +9,7 @@ import (
 
 	"github.com/zhaoyunxing92/flexi-code/server/configs"
 	"github.com/zhaoyunxing92/flexi-code/server/internal"
-	"github.com/zhaoyunxing92/flexi-code/server/internal/ctrl"
+	"github.com/zhaoyunxing92/flexi-code/server/internal/controller"
 	"github.com/zhaoyunxing92/flexi-code/server/internal/repo"
 	"github.com/zhaoyunxing92/flexi-code/server/internal/service"
 )
@@ -19,7 +19,7 @@ func initApplication(appConfig *configs.App, storageConfig *configs.Storage) (*g
 	panic(wire.Build(
 		internal.ProviderSetBase,
 		repo.ProviderSetRepo,
-		ctrl.ProviderSetCtrl,
+		controller.ProviderSetCtrl,
 		service.ProviderSetService,
 	))
 }

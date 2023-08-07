@@ -3,14 +3,14 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 
-	"github.com/zhaoyunxing92/flexi-code/server/internal/ctrl"
+	"github.com/zhaoyunxing92/flexi-code/server/internal/controller"
 )
 
 type Router struct {
-	datasheet *ctrl.DatasheetCtrl
+	datasheet *controller.DatasheetCtrl
 }
 
-func NewRouter(datasheet *ctrl.DatasheetCtrl) *Router {
+func NewRouter(datasheet *controller.DatasheetCtrl) *Router {
 	return &Router{datasheet: datasheet}
 }
 
