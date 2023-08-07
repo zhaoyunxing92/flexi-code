@@ -3,7 +3,6 @@ package sys
 import (
 	"github.com/zhaoyunxing92/flexi-code/server/internal/repo/sys"
 	"github.com/zhaoyunxing92/flexi-code/server/internal/schema"
-	"github.com/zhaoyunxing92/flexi-code/server/pkg/errors"
 )
 
 type AccountService struct {
@@ -15,6 +14,6 @@ func NewAccountService(repo sys.AccountRepo) *AccountService {
 }
 
 // Login email and password login
-func (s *AccountService) Login(email, password string) (schema.LoginResp, errors.Error) {
+func (s *AccountService) Login(email, password string) (schema.LoginResp, error) {
 	return s.repo.Login(email, password)
 }

@@ -12,7 +12,7 @@ import (
 )
 
 type AccountRepo interface {
-	Login(email, password string) (schema.LoginResp, errors.Error)
+	Login(email, password string) (schema.LoginResp, error)
 }
 
 type account struct {
@@ -24,7 +24,7 @@ func NewAccountRepo(storage *storage.Storage, tokenService *token.Service) Accou
 	return &account{db: storage.DB, tokenService: tokenService}
 }
 
-func (a *account) Login(email, pwd string) (schema.LoginResp, errors.Error) {
+func (a *account) Login(email, pwd string) (schema.LoginResp, error) {
 	var (
 		err  error
 		acc  sys.Account

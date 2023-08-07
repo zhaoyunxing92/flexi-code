@@ -7,13 +7,13 @@ type Error struct {
 }
 
 // NewError create error
-func NewError(code int, msg, reason string) Error {
-	return Error{Code: code, Msg: msg, Reason: reason}
+func NewError(code int, msg, reason string) *Error {
+	return &Error{Code: code, Msg: msg, Reason: reason}
 }
 
 // New create error
-func New(msg string) Error {
-	return Error{Code: 500, Msg: msg, Reason: "sys"}
+func New(msg string) *Error {
+	return &Error{Code: 500, Msg: msg, Reason: "sys"}
 }
 
 // Error return error with info
