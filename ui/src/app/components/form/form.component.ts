@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Definition} from '../../schema/field';
-import {FormGroup} from '@angular/forms';
-import {FieldControlService} from '../../service/field-control.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Definition } from '../../schema/field';
+import { FormGroup } from '@angular/forms';
+import { FieldControlService } from '../../service/field-control.service';
 
 @Component({
   selector: 'fc-form',
@@ -23,7 +23,8 @@ export class FormComponent implements OnInit {
     this.form = this.fieldService.toFormGroup(this.fields as Definition<string>[])
   }
 
-  onSubmit() {
-
+  onSubmit(): void {
+    console.log(this.form.value)
   }
+
 }

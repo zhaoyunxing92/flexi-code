@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Definition } from '../schema/field';
-import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Injectable()
 export class FieldControlService {
@@ -24,7 +24,7 @@ export class FieldControlService {
         }
         let max = def.scope?.max;
         if (max) {
-          opts.push(Validators.minLength(max))
+          opts.push(Validators.maxLength(max))
         }
       }
       // @ts-ignore
